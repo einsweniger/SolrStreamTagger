@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+}
+
+group 'de.einsweniger'
+version '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    withJavadocJar()
+}
+
+test {
+    systemProperty 'java.security.egd', 'file:/dev/./urandom'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://maven.restlet.talend.com'
+    }
+}
+
+dependencies {
+    compileOnly('org.apache.solr:solr-core:8.4.1')
+    testImplementation('org.apache.solr:solr-test-framework:8.4.1')
+    testImplementation('org.apache.lucene:lucene-test-framework:8.4.1')
+    testImplementation('org.apache.commons:commons-lang3:3.9')
+//    testFixturesApi 'org.apache.commons:commons-lang3:3.9'
+    testImplementation('junit:junit:4.12')
+
+}
